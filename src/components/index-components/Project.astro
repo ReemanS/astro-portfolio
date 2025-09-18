@@ -1,0 +1,70 @@
+---
+import "@/styles/global.css";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+---
+
+<h1>Projects</h1>
+<ul class="pt-4 flex flex-wrap justify-center gap-8">
+    {allProjects.map((project) => (
+        <a class="project-card p-4 rounded-lg max-w-md group" href={project.data.link}>
+  <div class="object-contain">
+    <img
+      src={project.data.thumbnail!}
+      alt={project.data.title}
+      class="rounded-lg box-border group-hover:p-[0.08rem] group-active:p-[0.08rem] transition-all duration-200"
+    />
+  </div>
+
+  <div class="text-left">
+    <h3 class="pt-4 flex items-center">
+      <span class="pr-1">{project.data.title}</span>
+      <!-- <IoIosArrowRoundForward class="text-3xl text-slate-500 group-hover:translate-x-1 group-active:translate-x-1 transition duration-200" /> -->
+    </h3>
+    <p class="pt-0.5">{project.data.description}</p>
+    <div
+      class="flex text-xs gap-3 py-1.5 text-slate-500 group-hover:text-text group-active:text-text transition duration-200"
+    >
+      {project.data.technologies.map((tech: any) => <div>{tech}</div>)}
+    </div>
+  </div>
+</a>
+    ))}
+</ul>
+
+<style>
+  @reference "@/styles/global.css";
+  /* Project Cards */
+  @property --myColor1 {
+    syntax: "<color>";
+    initial-value: rgba(0, 0, 0, 0);
+    inherits: false;
+  }
+
+  @property --myColor2 {
+    syntax: "<color>";
+    initial-value: rgba(0, 0, 0, 0);
+    inherits: false;
+  }
+
+  .project-card {
+    @apply transition ease-in duration-200;
+    background: linear-gradient(var(--myColor1), var(--myColor2));
+    transition:
+      --myColor1 500ms,
+      --myColor2 500ms;
+  }
+
+  .project-card:hover {
+    cursor: pointer;
+    --myColor1: rgba(220, 255, 249, 0.1);
+    --myColor2: rgb(200, 253, 244);
+  }
+
+  .project-card:active {
+    --myColor1: rgba(220, 255, 249, 0.1);
+    --myColor2: rgb(200, 253, 244);
+  }
+</style>
