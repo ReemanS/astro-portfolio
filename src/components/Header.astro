@@ -1,0 +1,41 @@
+---
+import "@/styles/global.css";
+---
+
+<nav
+  class="relative md:fixed top-0 left-0 right-0 px-8 md:px-24 py-8 bg-transparent z-[10] flex flex-row items-center justify-between bg-gradient-to-b from-white"
+>
+  <img src="/brand/rs-color.svg" alt="RS" class="w-12" />
+  <ul class="flex text-sm space-x-6 md:space-x-20">
+    <li class="relative nav-item"><a href="/#projects">Projects</a></li>
+    <li class="relative nav-item"><a href="/#about">About</a></li>
+    <li class="relative nav-item"><a href="/#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .nav-item:hover {
+    @apply text-primary transition duration-150 cursor-pointer;
+  }
+
+  /* some basic underline effect i got somewhere */
+  .nav-item::after {
+    @apply bg-primary;
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+</style>
