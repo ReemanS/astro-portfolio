@@ -1,15 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/index/Hero.astro";
 import Header from "@/components/Header.astro";
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Reeman's New Portfolio"
+  description="Main content page for Reeman Singh's Web Portfolio, written using Astro"
+>
   <Header />
-  <div class="pt-2 p-4 mt-24">
-    Hello! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, sed
-    unde quis asperiores deserunt ipsam temporibus architecto eius, eligendi
-    reiciendis facilis, nostrum provident et magnam necessitatibus numquam ipsa
-    nobis minus fugiat distinctio saepe natus animi neque id! Fugiat, numquam
-    pariatur!
-  </div>
+  <Hero />
 </BaseLayout>

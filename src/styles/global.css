@@ -23,3 +23,7 @@
   --color-secondary: #dddbff;
   --color-accent: #78afe3;
 }
+
+h1 {
+  @apply font-space-grotesk;
+}
