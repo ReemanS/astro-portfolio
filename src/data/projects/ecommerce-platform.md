@@ -8,7 +8,7 @@ technologies:
   - PostgreSQL
   - Stripe
 link: "https://example.com/shop"
-thumbnail: "https://picsum.photos/1200/800?random=2"
+thumbnail: "https://picsum.photos/1200/800"
 ---
 
 Includes admin dashboard and order analytics.

@@ -8,7 +8,7 @@ technologies:
   - Jest
 link: "https://example.com/ui-library"
 featured: false
-thumbnail: "https://picsum.photos/1200/800?random=4"
+thumbnail: "https://picsum.photos/1200/800"
 ---
 
 Includes components, documentation site, and unit tests.

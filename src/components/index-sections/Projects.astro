@@ -1,0 +1,13 @@
+---
+import "@/styles/global.css";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Project from "@/components/index-components/Project.astro";
+
+const allProjects = await getCollection("projects");
+---
+
+<h1>Projects</h1>
+<ul class="pt-4 flex flex-wrap justify-center gap-8">
+  {allProjects.map((project) => <Project projectData={project} />)}
+</ul>

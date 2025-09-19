@@ -7,7 +7,7 @@ technologies:
   - IndexedDB
   - Service Worker
 featured: false
-thumbnail: "https://picsum.photos/1200/800?random=3"
+thumbnail: "https://picsum.photos/1200/800"
 ---
 
 Supports tagging, search, and encryption at rest.

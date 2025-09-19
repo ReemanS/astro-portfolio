@@ -1,42 +1,48 @@
 ---
 import "@/styles/global.css";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import ArrowForwardIcon from "@/assets/icons/arrow-forward.svg";
+import type { CollectionEntry } from "astro:content";
 
-const allProjects = await getCollection("projects");
+// using Interface for type checking is neat
+// I should use this elsewhere
+interface Props {
+  projectData: CollectionEntry<"projects">;
+}
+const { projectData } = Astro.props;
 ---
 
-<h1>Projects</h1>
-<ul class="pt-4 flex flex-wrap justify-center gap-8">
-    {allProjects.map((project) => (
-        <a class="project-card p-4 rounded-lg max-w-md group" href={project.data.link}>
+<a
+  class="project-card p-4 rounded-lg max-w-md group"
+  href={projectData.data.link}
+>
   <div class="object-contain">
     <img
-      src={project.data.thumbnail!}
-      alt={project.data.title}
-      class="rounded-lg box-border group-hover:p-[0.08rem] group-active:p-[0.08rem] transition-all duration-200"
+      src={projectData.data.thumbnail}
+      alt={projectData.data.title}
+      class="rounded-lg box-border group-hover:m-[0.08rem] group-active:m-[0.08rem] transition-all duration-200"
     />
   </div>
 
   <div class="text-left">
     <h3 class="pt-4 flex items-center">
-      <span class="pr-1">{project.data.title}</span>
-      <!-- <IoIosArrowRoundForward class="text-3xl text-slate-500 group-hover:translate-x-1 group-active:translate-x-1 transition duration-200" /> -->
+      <span class="pr-2">{projectData.data.title}</span>
+
+      <ArrowForwardIcon
+        class="w-4 text-slate-500 group-hover:translate-x-1 group-active:translate-x-1 transition duration-200"
+      />
     </h3>
-    <p class="pt-0.5">{project.data.description}</p>
+    <p class="pt-0.5">{projectData.data.description}</p>
     <div
       class="flex text-xs gap-3 py-1.5 text-slate-500 group-hover:text-text group-active:text-text transition duration-200"
     >
-      {project.data.technologies.map((tech: any) => <div>{tech}</div>)}
+      {projectData.data.technologies.map((tech: any) => <div>{tech}</div>)}
     </div>
   </div>
 </a>
-    ))}
-</ul>
 
 <style>
   @reference "@/styles/global.css";
-  /* Project Cards */
+
   @property --myColor1 {
     syntax: "<color>";
     initial-value: rgba(0, 0, 0, 0);

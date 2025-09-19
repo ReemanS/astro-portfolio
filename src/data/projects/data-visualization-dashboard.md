@@ -8,7 +8,7 @@ technologies:
   - WebSockets
 link: "https://example.com/dashboard"
 featured: true
-thumbnail: "https://picsum.photos/1200/800?random=6"
+thumbnail: "https://picsum.photos/1200/800"
 ---
 
 Real-time charts, filters, and exportable reports.
