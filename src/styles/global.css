@@ -24,6 +24,11 @@
   --color-accent: #78afe3;
 }
 
-h1 {
+h1,
+h2 {
   @apply font-space-grotesk;
+}
+
+h2 {
+  @apply text-3xl;
 }

@@ -6,7 +6,7 @@ technologies:
   - Unity
   - C#
   - Google Play Services
-thumbnail: "https://picsum.photos/1200/800"
+thumbnail: "https://picsum.photos/id/14/1200/800"
 ---
 
 Polished gameplay loop with analytics and A/B tested monetization.

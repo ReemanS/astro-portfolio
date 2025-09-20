@@ -11,45 +11,46 @@ interface Props {
 const { projectData } = Astro.props;
 ---
 
-<a
-  class="project-card p-4 rounded-lg max-w-md group"
-  href={projectData.data.link}
->
-  <div class="object-contain">
-    <img
-      src={projectData.data.thumbnail}
-      alt={projectData.data.title}
-      class="rounded-lg box-border group-hover:m-[0.08rem] group-active:m-[0.08rem] transition-all duration-200"
-    />
-  </div>
-
-  <div class="text-left">
-    <h3 class="pt-4 flex items-center">
-      <span class="pr-2">{projectData.data.title}</span>
-
-      <ArrowForwardIcon
-        class="w-4 text-slate-500 group-hover:translate-x-1 group-active:translate-x-1 transition duration-200"
+<li class="project-card p-4 rounded-lg max-w-md group m-4">
+  <a href={projectData.data.link}>
+    <div class="object-contain rounded-lg overflow-hidden">
+      <img
+        src={projectData.data.thumbnail}
+        alt={projectData.data.title}
+        class="w-full h-auto box-border transform transition-transform duration-300 ease-out group-hover:scale-103"
       />
-    </h3>
-    <p class="pt-0.5">{projectData.data.description}</p>
-    <div
-      class="flex text-xs gap-3 py-1.5 text-slate-500 group-hover:text-text group-active:text-text transition duration-200"
-    >
-      {projectData.data.technologies.map((tech: any) => <div>{tech}</div>)}
     </div>
-  </div>
-</a>
+
+    <div class="text-left">
+      <h3 class="pt-4 flex items-center">
+        <span class="font-space-grotesk font-bold text-xl mr-2 project-title"
+          >{projectData.data.title}</span
+        >
+
+        <ArrowForwardIcon
+          class="w-4 text-slate-500 group-hover:translate-x-1 group-active:translate-x-1 transition duration-200"
+        />
+      </h3>
+      <p class="pt-0.5">{projectData.data.description}</p>
+      <div
+        class="flex text-xs gap-3 py-1.5 text-slate-500 group-hover:text-text group-active:text-text transition duration-200"
+      >
+        {projectData.data.technologies.map((tech: any) => <div>{tech}</div>)}
+      </div>
+    </div>
+  </a>
+</li>
 
 <style>
   @reference "@/styles/global.css";
 
-  @property --myColor1 {
+  @property --startColor {
     syntax: "<color>";
     initial-value: rgba(0, 0, 0, 0);
     inherits: false;
   }
 
-  @property --myColor2 {
+  @property --endColor {
     syntax: "<color>";
     initial-value: rgba(0, 0, 0, 0);
     inherits: false;
@@ -57,20 +58,43 @@ const { projectData } = Astro.props;
 
   .project-card {
     @apply transition ease-in duration-200;
-    background: linear-gradient(var(--myColor1), var(--myColor2));
+    background: linear-gradient(var(--startColor), var(--endColor));
     transition:
-      --myColor1 500ms,
-      --myColor2 500ms;
+      --startColor 500ms,
+      --endColor 500ms;
   }
 
   .project-card:hover {
     cursor: pointer;
-    --myColor1: rgba(220, 255, 249, 0.1);
-    --myColor2: rgb(200, 253, 244);
+    --startColor: rgba(220, 255, 249, 0.1);
+    --endColor: rgb(200, 253, 244);
   }
 
   .project-card:active {
-    --myColor1: rgba(220, 255, 249, 0.1);
-    --myColor2: rgb(200, 253, 244);
+    --startColor: rgba(220, 255, 249, 0.1);
+    --endColor: rgb(200, 253, 244);
+  }
+
+  .project-title {
+    @apply relative transition duration-150;
+  }
+
+  .project-title::after {
+    @apply bg-text;
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    max-height: 2px;
+    bottom: 0px;
+    left: 0;
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+  }
+
+  li:hover .project-title::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 </style>

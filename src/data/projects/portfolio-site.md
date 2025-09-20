@@ -9,7 +9,7 @@ technologies:
   - Vercel
 link: "https://example.com/portfolio"
 featured: true
-thumbnail: "https://picsum.photos/1200/800"
+thumbnail: "https://picsum.photos/id/20/1200/800"
 ---
 
 Landing page, project gallery, and a small blog.
