@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/index-sections/Hero.astro";
 import Header from "@/components/Header.astro";
 import Projects from "@/components/index-sections/Projects.astro";
+import About from "@/components/index-sections/About.astro";
 ---
 
 <BaseLayout
@@ -10,6 +11,9 @@ import Projects from "@/components/index-sections/Projects.astro";
   description="Main content page for Reeman Singh's Web Portfolio, written using Astro"
 >
   <Header />
-  <Hero />
-  <Projects />
+  <main class="max-w-[64rem] md:w-5/6 mx-auto">
+    <Hero />
+    <Projects />
+    <About />
+  </main>
 </BaseLayout>

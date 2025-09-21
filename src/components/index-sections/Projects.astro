@@ -6,9 +6,10 @@ import Project from "@/components/index-components/Project.astro";
 const allProjects = await getCollection("projects");
 ---
 
-<h2 class="text-center">My Featured Projects</h2>
-<section class="h-max flex justify-center">
-  <ul class="md:w-3/4 2xl:max-w-[108rem] pt-4 flex flex-wrap justify-center">
+<section class="h-max flex flex-col items-center">
+  <h2 class="text-center">My Featured Projects</h2>
+  <ul class="pt-4 flex flex-wrap justify-center">
+    {/*md:w-5/6 2xl:max-w-[108rem] */}
     {allProjects.map((project) => <Project projectData={project} />)}
   </ul>
 </section>
