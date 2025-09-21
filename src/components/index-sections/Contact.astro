@@ -1,0 +1,101 @@
+---
+import "@/styles/global.css";
+import Container from "@/components/Container.astro";
+import SocialLink from "@/components/index-components/SocialLink.astro";
+import EmailIcon from "@/assets/icons/email-icon.svg";
+import CopyIcon from "@/assets/icons/copy-icon.svg";
+import LinkedInIcon from "@/assets/icons/linkedin-logo.svg";
+import GithubIcon from "@/assets/icons/github-logo.svg";
+import FacebookIcon from "@/assets/icons/facebook-logo.svg";
+---
+
+<section id="contact" class="py-16">
+  <Container class="max-w-xl">
+    <h2 class="mb-4 text-center">Let's Get in Touch</h2>
+    <div class="mb-8">
+      If you are interested in working with me, send me an email or contact me
+      through instant message!
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-lg font-semibold mb-4">Email</h3>
+      <div class="flex gap-3">
+        <a href="mailto:reemanl.singh422@email.com" class="contact-item flex-1">
+          <EmailIcon class="w-6 text-gray-600" />
+          <div>
+            <div class="contact-label">reemanl.singh422@gmail.com</div>
+          </div>
+        </a>
+        <button
+          id="copyEmailBtn"
+          class="copy-button"
+          title="Copy email address"
+        >
+          <CopyIcon class="w-5" />
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Social Media</h3>
+      <div class="space-y-3">
+        <SocialLink
+          href="https://www.linkedin.com/in/reeman-singh"
+          label="LinkedIn"
+          value="in/reeman-singh"
+        >
+          <LinkedInIcon class="w-6" />
+        </SocialLink>
+
+        <SocialLink
+          href="https://github.com/ReemanS"
+          label="GitHub"
+          value="ReemanS"
+        >
+          <GithubIcon class="w-6" />
+        </SocialLink>
+
+        <SocialLink
+          href="https://facebook.com/ree.manok"
+          label="Facebook"
+          value="ree.manok"
+        >
+          <FacebookIcon class="w-6" />
+        </SocialLink>
+      </div>
+    </div>
+  </Container>
+
+  <style>
+    @reference "@/styles/global.css";
+
+    h3 {
+      @apply font-space-grotesk font-medium text-xl;
+    }
+
+    .contact-item {
+      @apply flex items-center gap-4 p-4 rounded-lg border border-gray-200
+       hover:border-primary active:border-primary hover:bg-primary/10 active:bg-primary/10
+        transition duration-200 text-left;
+    }
+
+    .contact-label {
+      @apply text-sm md:text-base font-medium text-slate-900;
+    }
+
+    .copy-button {
+      @apply flex items-center justify-center p-4 rounded-lg border border-gray-200 
+       hover:border-primary hover:bg-primary/10 active:border-primary active:bg-primary/10
+       text-gray-400 hover:text-primary hover:cursor-pointer transition duration-200;
+    }
+  </style>
+</section>
+
+<script is:inline>
+  const copyBtn = document.getElementById("copyEmailBtn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("reemanl.singh422@gmail.com");
+    });
+  }
+</script>

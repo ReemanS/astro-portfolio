@@ -12,6 +12,7 @@ const allProjects = await getCollection("projects");
     <h2 class="text-center">My Featured Projects</h2>
     <ul class="pt-4 flex flex-wrap justify-center">
       {/*md:w-5/6 2xl:max-w-[108rem] */}
+      {/* currently placeholder projects */}
       {allProjects.map((project) => <Project projectData={project} />)}
     </ul>
   </Container>

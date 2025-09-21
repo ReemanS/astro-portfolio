@@ -1,0 +1,42 @@
+---
+// mixing in some more type safety
+interface Props {
+  href: string;
+  label: string;
+  value: string;
+  class?: string;
+}
+
+const { href, label, value, class: className = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`contact-item ${className}`}
+>
+  <slot />
+  <div>
+    <div class="contact-label">{label}</div>
+    <div class="contact-value">{value}</div>
+  </div>
+</a>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .contact-item {
+    @apply flex items-center gap-4 p-4 rounded-lg border border-gray-200
+     hover:border-primary active:border-primary hover:bg-primary/10 active:bg-primary/10
+      transition duration-200 text-left;
+  }
+
+  .contact-label {
+    @apply text-sm md:text-base font-medium text-slate-900;
+  }
+
+  .contact-value {
+    @apply text-sm text-slate-600;
+  }
+</style>
