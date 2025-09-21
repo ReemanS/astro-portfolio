@@ -1,16 +1,19 @@
 ---
 import "@/styles/global.css";
+import Container from "@/components/Container.astro";
 ---
 
 <nav
-  class="md:fixed top-0 left-0 right-0 px-8 max-w-[64rem] md:w-5/6 mx-auto py-8 bg-transparent z-[10] flex flex-row items-center justify-between bg-gradient-to-b from-white"
+  class="md:fixed top-0 left-0 right-0 py-8 z-[100] bg-transparent bg-gradient-to-b from-white"
 >
-  <img src="/brand/rs-color.svg" alt="RS" class="w-12" />
-  <ul class="flex text-sm space-x-6 md:space-x-20">
-    <li class="relative nav-item"><a href="/#projects">Projects</a></li>
-    <li class="relative nav-item"><a href="/#about">About</a></li>
-    <li class="relative nav-item"><a href="/#contact">Contact</a></li>
-  </ul>
+  <Container class="flex flex-row items-center justify-between">
+    <img src="/brand/rs-color.svg" alt="RS" class="w-12" />
+    <ul class="flex text-sm space-x-6 md:space-x-20">
+      <li class="relative nav-item"><a href="/#projects">Projects</a></li>
+      <li class="relative nav-item"><a href="/#about">About</a></li>
+      <li class="relative nav-item"><a href="/#contact">Contact</a></li>
+    </ul>
+  </Container>
 </nav>
 
 <style>

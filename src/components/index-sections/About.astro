@@ -1,50 +1,53 @@
 ---
 import "@/styles/global.css";
 import ImageSwitcher from "@/components/index-components/ImageCycler";
+import Container from "@/components/Container.astro";
 ---
 
-<section id="about" class="mx-8 mt-4">
-  <h2 class="mb-2 text-center">About me</h2>
-  <div class="flex flex-wrap mt-4 justify-between gap-y-4">
-    <div class="w-full sm:basis-full md:basis-2/5 mb-4 md:mb-0">
-      {/* Astro Islands ftw */}
-      <ImageSwitcher client:load />
+<section id="about" class="my-12">
+  <Container>
+    <h2 class="mb-12 text-center">About me</h2>
+    <div class="flex flex-wrap mt-4 justify-between gap-y-4">
+      <div class="w-full sm:basis-full md:basis-2/5 mb-4 md:mb-0">
+        {/* Astro Islands ftw */}
+        <ImageSwitcher client:load />
+      </div>
+      <div class="sm:basis-full md:basis-3/5 md:pl-12">
+        <p>
+          I graduated <strong>Summa Cum Laude</strong> with a <strong
+            >Bachelor of Science in Information Technology</strong
+          >, majoring in <strong>Software Technologies</strong> at West Visayas State
+          University.
+        </p>
+        <p class="md:ml-2">
+          What got me into tech in the first place is curiosity. I like the
+          feeling of taking an idea, breaking it down, and figuring out how to
+          actually build it. Coding has become the space where I get to explore,
+          try things out, make mistakes, and keep learning. There is always
+          something new to pick up, and I enjoy the process of growing along
+          with it.
+        </p>
+        <p>
+          Outside of work, I like to keep things balanced. I run and work out to
+          stay active, and I spend time with my pets when I want to slow down.
+          I’m also into photography and travelling, and when I really want to
+          switch off, I reach for a good book.
+        </p>
+        <p class="md:ml-2">
+          Looking ahead, I want to create projects that feel meaningful. I don’t
+          just want to build things that work, I want them to make life a little
+          easier, spark curiosity, or maybe even inspire someone else to create
+          in same the way others have also inspired me. That’s what keeps me
+          excited about the path I’m on.
+        </p>
+      </div>
     </div>
-    <div class="sm:basis-full md:basis-3/5 md:pl-12">
-      <p>
-        I graduated <strong>Summa Cum Laude</strong> with a <strong
-          >Bachelor of Science in Information Technology</strong
-        >, majoring in <strong>Software Technologies</strong> at West Visayas State
-        University.
-      </p>
-      <p class="md:ml-2">
-        What got me into tech in the first place is curiosity. I like the
-        feeling of taking an idea, breaking it down, and figuring out how to
-        actually build it. Coding has become the space where I get to explore,
-        try things out, make mistakes, and keep learning. There is always
-        something new to pick up, and I enjoy the process of growing along with
-        it.
-      </p>
-      <p>
-        Outside of work, I like to keep things balanced. I run and work out to
-        stay active, and I spend time with my pets when I want to slow down. I’m
-        also into photography and travelling, and when I really want to switch
-        off, I reach for a good book.
-      </p>
-      <p class="md:ml-2">
-        Looking ahead, I want to create projects that feel meaningful. I don’t
-        just want to build things that work, I want them to make life a little
-        easier, spark curiosity, or maybe even inspire someone else to create in
-        same the way others have also inspired me. That’s what keeps me excited
-        about the path I’m on.
-      </p>
-    </div>
-  </div>
 
-  <style>
-    @reference "@/styles/global.css";
-    p {
-      @apply mb-3;
-    }
-  </style>
+    <style>
+      @reference "@/styles/global.css";
+      p {
+        @apply mb-3;
+      }
+    </style>
+  </Container>
 </section>

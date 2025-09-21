@@ -1,0 +1,11 @@
+---
+// Container so I could render full backgrounds
+// without being cut off at the edges
+
+// also, type safety :o
+const { class: className = "" } = Astro.props as { class?: string };
+---
+
+<div class={`max-w-[64rem] md:w-5/6 mx-auto px-6 lg:px-8 ${className}`}>
+  <slot />
+</div>
