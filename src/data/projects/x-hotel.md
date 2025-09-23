@@ -2,7 +2,7 @@
 title: "X-Hotel"
 description: "A hotel booking website created for a fictional hotel chain"
 date: "2023-11-16"
-technologies: ["Next.js", "TypeScript", "TailwindCSS", "Firebase"]
+technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Firebase"]
 links:
   github: "https://github.com/ReemanS/x-hotel"
 featured: true

@@ -2,12 +2,30 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/Container.astro";
-import ProjectCard from "@/components/projects/ProjectCard.astro";
+import ProjectsFilter from "@/components/projects/ProjectsFilter";
 
 // Get all projects, sorted by date (newest to oldest)
 const allProjects = (await getCollection("projects")).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+
+const technologies = [
+  ...new Set(
+    allProjects.map((project: any) => project.data.technologies).flat()
+  ),
+];
+
+const projectsData = allProjects.map((project) => ({
+  id: project.id,
+  data: {
+    title: project.data.title,
+    description: project.data.description,
+    date: project.data.date,
+    technologies: project.data.technologies,
+    thumbnail: project.data.thumbnail,
+    links: project.data.links,
+  },
+}));
 ---
 
 <BaseLayout
@@ -20,11 +38,11 @@ const allProjects = (await getCollection("projects")).sort(
         <h2 class="mb-4 text-center">All Projects</h2>
       </div>
 
-      <div
-        class="flex flex-col items-center md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto md:items-stretch"
-      >
-        {allProjects.map((project) => <ProjectCard projectData={project} />)}
-      </div>
+      <ProjectsFilter
+        client:load
+        projects={projectsData}
+        technologies={technologies}
+      />
 
       {
         allProjects.length === 0 && (
