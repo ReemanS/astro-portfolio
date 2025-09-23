@@ -32,3 +32,11 @@ h2 {
 h2 {
   @apply text-3xl;
 }
+.btn-primary {
+  @apply bg-primary text-background p-4 font-bold rounded-lg transition ease-in duration-150 text-base;
+}
+
+.btn-primary:hover {
+  background-color: #00a688;
+  cursor: pointer;
+}

@@ -17,8 +17,8 @@ const name = "Reeman Singh".split(""); // i'll add animations for this later
       <h1
         class="text-primary name-letters leading-tight md:leading-tight font-extrabold -mb-0.5"
       >
-        <!-- gonna animate this later -->
-        <!-- could probably put this into its own React component -->
+        {/*gonna animate this later  */}
+        {/* could probably put this into its own React component*/}
         {name.map((letter) => <span>{letter}</span>)}
       </h1>
 
@@ -80,14 +80,5 @@ const name = "Reeman Singh".split(""); // i'll add animations for this later
     .name-letters {
       line-height: 4rem;
     }
-  }
-
-  .btn-primary {
-    @apply bg-primary text-background p-4 font-bold rounded-lg transition ease-in duration-150 text-base;
-  }
-
-  .btn-primary:hover {
-    background-color: #00a688;
-    cursor: pointer;
   }
 </style>

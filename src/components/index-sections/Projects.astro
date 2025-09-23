@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import { getCollection } from "astro:content";
 import Project from "@/components/index-components/Project.astro";
 import Container from "@/components/Container.astro";
+import ChevronRightIcon from "@/assets/icons/chevron-right.svg";
 
 const allProjects = (
   await getCollection("projects", ({ data }) => {
@@ -21,9 +22,38 @@ const allProjects = (
       {/* currently placeholder projects */}
       {allProjects.map((project) => <Project projectData={project} />)}
     </ul>
+    <a
+      href="/projects"
+      class="mt-6 text-slate-600 inline-flex items-center projects-link"
+    >
+      <span class="mr-2">See All Projects</span>
+      <ChevronRightIcon class="w-4" />
+    </a>
   </Container>
 </section>
 
 <style>
   @reference "@/styles/global.css";
+
+  .projects-link {
+    @apply relative transition duration-200 hover:text-primary;
+  }
+
+  .projects-link::after {
+    @apply bg-primary;
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .projects-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 </style>
