@@ -1,0 +1,52 @@
+---
+import "@/styles/global.css";
+import Container from "@/components/Container.astro";
+---
+
+<header
+  class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60"
+>
+  <Container class="py-4">
+    <nav class="flex items-center justify-between">
+      <a
+        href="/"
+        class="flex items-center gap-3 group"
+        title="Click to go back to the main page"
+      >
+        <img src="/brand/rs-color.svg" alt="RS" class="w-8 h-8" />
+      </a>
+
+      <div class="flex items-center gap-6">
+        <a href="/#projects" class="project-nav-link">Projects</a>
+        <a href="/#about" class="project-nav-link">About</a>
+        <a href="/#contact" class="project-nav-link">Contact</a>
+      </div>
+    </nav>
+  </Container>
+</header>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .project-nav-link {
+    @apply text-sm text-slate-600 hover:text-primary transition duration-200 relative;
+  }
+
+  .project-nav-link::after {
+    @apply bg-primary;
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .project-nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+</style>

@@ -1,0 +1,143 @@
+---
+import { getCollection, type CollectionEntry, render } from "astro:content";
+import ProjectLayout from "@/layouts/ProjectLayout.astro";
+import ExternalLinkIcon from "@/assets/icons/external-link.svg";
+import ChatOutlineIcon from "@/assets/icons/chat-outline.svg";
+
+// Generate static paths for all projects
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<ProjectLayout
+  title={project.data.title}
+  description={project.data.description}
+>
+  {/* hero */}
+  <div class="project-meta">
+    <h1 class="text-2xl font-bold">{project.data.title}</h1>
+    <p class="text-slate-600 mb-4">{project.data.description}</p>
+
+    {/* metadata */}
+    <div class="flex flex-wrap gap-4 text-sm text-slate-600 mb-4">
+      {
+        project.data.date && (
+          <div class="self-center-safe">
+            <span class="font-bold">Date:</span>
+            <span>{project.data.date}</span>
+          </div>
+        )
+      }
+      {
+        project.data.link && (
+          <div>
+            <a
+              href={project.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center text-primary hover:text-primary/80 hover:underline transition duration-200"
+            >
+              <spa class="mr-1">View Live Project</spa>
+              <ExternalLinkIcon class="w-4" />
+            </a>
+          </div>
+        )
+      }
+    </div>
+
+    {/* tech stack */}
+    {
+      project.data.technologies && project.data.technologies.length > 0 && (
+        <div>
+          <span class="font-medium text-slate-700 block mb-1">
+            Technologies:
+          </span>
+          <div class="tech-stack">
+            {project.data.technologies.map((tech: string) => (
+              <span class="tech-tag">{tech}</span>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </div>
+
+  {/* thumbnail */}
+  {
+    project.data.thumbnail && (
+      <img
+        src={project.data.thumbnail}
+        alt={`${project.data.title} preview`}
+        class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8"
+      />
+    )
+  }
+
+  {/* content */}
+  <div class="prose">
+    <Content />
+  </div>
+
+  {/* cta */}
+  <div
+    class="mt-12 p-5 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg border border-primary/20"
+  >
+    <h3 class="font-space-grotesk text-lg font-semibold mb-2">
+      Interested in this project?
+    </h3>
+    <p class="text-sm text-slate-600 mb-4">
+      I'd love to discuss the technical details, challenges, and lessons learned
+      from this project.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      {
+        project.data.link && (
+          <a
+            href={project.data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-primary text-white px-3 py-1 rounded-lg hover:bg-primary/90 transition duration-200"
+          >
+            <ExternalLinkIcon class="w-4" />
+            View Live
+          </a>
+        )
+      }
+      <a
+        href="/#contact"
+        class="inline-flex items-center gap-2 border border-primary text-primary px-3 py-1 rounded-lg hover:bg-primary/5 transition duration-200"
+      >
+        <ChatOutlineIcon class="w-4" />
+        Get in Touch
+      </a>
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .project-meta {
+    @apply bg-slate-50 p-6 rounded-lg border border-slate-200 mb-8;
+  }
+
+  .tech-stack {
+    @apply flex flex-wrap gap-2 mt-2;
+  }
+
+  .tech-tag {
+    @apply bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium;
+  }
+</style>

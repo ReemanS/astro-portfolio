@@ -1,0 +1,142 @@
+---
+import ProjectFooter from "@/components/projects/ProjectFooter.astro";
+import ProjectHeader from "@/components/projects/ProjectHeader.astro";
+import Container from "@/components/Container.astro";
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Reeman Singh" />
+    <meta name="keywords" content="Astro, Portfolio, Reeman Singh" />
+    <title>{`${title} - Reeman Singh`}</title>
+  </head>
+  <body class="font-manrope bg-white">
+    <ProjectHeader />
+
+    <main class="min-h-screen">
+      <Container class="py-8 md:py-12">
+        <slot />
+      </Container>
+    </main>
+
+    <ProjectFooter />
+  </body>
+</html>
+
+<style is:global>
+  @reference "@/styles/global.css";
+
+  /* Markdown styling */
+  .prose h1 {
+    @apply font-space-grotesk text-4xl md:text-5xl font-bold text-slate-900 mb-6 mt-8 leading-tight;
+  }
+
+  .prose h2 {
+    @apply font-space-grotesk text-3xl md:text-4xl font-semibold text-slate-800 mb-4 mt-8 leading-tight;
+  }
+
+  .prose h3 {
+    @apply font-space-grotesk text-2xl md:text-3xl font-medium text-slate-800 mb-3 mt-6 leading-tight;
+  }
+
+  .prose h4 {
+    @apply font-space-grotesk text-xl md:text-2xl font-medium text-slate-800 mb-3 mt-6 leading-tight;
+  }
+
+  .prose h5 {
+    @apply font-space-grotesk text-lg md:text-xl font-medium text-slate-800 mb-2 mt-4 leading-tight;
+  }
+
+  .prose h6 {
+    @apply font-space-grotesk text-base md:text-lg font-medium text-slate-700 mb-2 mt-4 leading-tight;
+  }
+
+  .prose p {
+    @apply mb-4 text-base md:text-lg text-slate-700 leading-relaxed;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply mb-6 ml-6 space-y-2;
+  }
+
+  .prose li {
+    @apply text-base md:text-lg text-slate-700 leading-relaxed;
+  }
+
+  .prose img {
+    @apply rounded-lg shadow-md my-8 w-full;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-6 italic text-slate-600 my-6 bg-slate-50 py-4;
+  }
+
+  .prose code {
+    @apply bg-slate-100 px-2 py-1 rounded text-sm font-mono text-slate-800;
+  }
+
+  .prose pre {
+    @apply bg-slate-900 text-slate-100 p-6 rounded-lg overflow-x-auto my-8 text-sm;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-slate-100;
+  }
+
+  .prose a {
+    @apply text-primary hover:text-primary/80 transition duration-200 underline underline-offset-2;
+  }
+
+  .prose strong {
+    @apply font-semibold text-slate-900;
+  }
+
+  .prose em {
+    @apply italic text-slate-600;
+  }
+
+  /* proper spacing */
+  .prose > *:first-child {
+    @apply mt-0;
+  }
+
+  .prose > *:last-child {
+    @apply mb-0;
+  }
+
+  .prose table {
+    @apply w-full border-collapse my-8;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-slate-200 px-4 py-3 text-left;
+  }
+
+  .prose th {
+    @apply bg-slate-50 font-semibold text-slate-900;
+  }
+
+  .prose td {
+    @apply text-slate-700;
+  }
+
+  .prose hr {
+    @apply my-8 border-slate-200;
+  }
+</style>
