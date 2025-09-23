@@ -4,7 +4,13 @@ import { getCollection } from "astro:content";
 import Project from "@/components/index-components/Project.astro";
 import Container from "@/components/Container.astro";
 
-const allProjects = await getCollection("projects");
+const allProjects = (
+  await getCollection("projects", ({ data }) => {
+    return data.featured === true;
+  })
+).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 
 <section id="projects" class="py-16 bg-gray-400/5">
