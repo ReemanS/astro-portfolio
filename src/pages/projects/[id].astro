@@ -41,15 +41,30 @@ const { Content } = await render(project);
         )
       }
       {
-        project.data.link && (
+        project.data.links?.live && (
           <div>
             <a
-              href={project.data.link}
+              href={project.data.links.live}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center text-primary hover:text-primary/80 hover:underline transition duration-200"
             >
               <spa class="mr-1">View Live Project</spa>
+              <ExternalLinkIcon class="w-4" />
+            </a>
+          </div>
+        )
+      }
+      {
+        project.data.links?.github && (
+          <div>
+            <a
+              href={project.data.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center text-primary hover:text-primary/80 hover:underline transition duration-200"
+            >
+              <spa class="mr-1">View on GitHub</spa>
               <ExternalLinkIcon class="w-4" />
             </a>
           </div>
@@ -76,9 +91,9 @@ const { Content } = await render(project);
 
   {/* thumbnail */}
   {
-    project.data.thumbnail && (
+    project.data.heroImg && (
       <img
-        src={project.data.thumbnail}
+        src={project.data.heroImg}
         alt={`${project.data.title} preview`}
         class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8"
       />
@@ -103,9 +118,9 @@ const { Content } = await render(project);
     </p>
     <div class="flex flex-wrap gap-3">
       {
-        project.data.link && (
+        project.data.links && (
           <a
-            href={project.data.link}
+            href={project.data.links.live}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 bg-primary text-white px-3 py-1 rounded-lg hover:bg-primary/90 transition duration-200"

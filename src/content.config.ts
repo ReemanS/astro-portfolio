@@ -14,9 +14,15 @@ const projects = defineCollection({
       }).format(d);
     }),
     technologies: z.array(z.string()),
-    link: z.string().url().optional(),
-    featured: z.boolean().optional(),
+    links: z
+      .object({
+        github: z.string().url().optional(),
+        live: z.string().url().optional(),
+      })
+      .optional(),
+    featured: z.boolean().default(false),
     thumbnail: z.string().optional(),
+    heroImg: z.string().optional(),
   }),
 });
 

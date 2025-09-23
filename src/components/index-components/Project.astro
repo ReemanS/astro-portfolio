@@ -12,13 +12,13 @@ const { projectData } = Astro.props;
 ---
 
 <li class="project-card p-4 rounded-lg max-w-md group m-4">
-  <a href={projectData.data.link}>
+  <a href={`/projects/${projectData.id}`}>
     <div class="object-contain rounded-lg overflow-hidden">
-      <!-- <img
+      <img
         src={projectData.data.thumbnail}
         alt={projectData.data.title}
-        class="w-full h-auto box-border transform transition-transform duration-300 ease-out group-hover:scale-103"
-      /> -->
+        class="w-full h-64 object-cover box-border transform transition-transform duration-300 ease-out group-hover:scale-103"
+      />
     </div>
 
     <div class="text-left">
