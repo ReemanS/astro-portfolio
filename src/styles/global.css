@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: "Manrope";
   src: url("/fonts/Manrope-VariableFont_wght.ttf") format("truetype");
@@ -39,4 +43,13 @@ h2 {
 .btn-primary:hover {
   background-color: #00a688;
   cursor: pointer;
+}
+
+section[id] {
+  scroll-margin-top: 60px; /* Same as scroll-padding-top */
+}
+
+section[id]:target {
+  padding-top: 60px;
+  margin-top: -60px;
 }

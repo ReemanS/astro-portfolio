@@ -15,9 +15,25 @@ export default function TechnologyFilter({
 }: TechnologyFilterProps) {
   return (
     <div className="mb-8">
-      <h3 className="text-lg font-semibold mb-4 text-slate-700">
-        Filter by Technology
-      </h3>
+      <div className="flex mb-4 gap-6 items-center">
+        <h3 className="text-lg font-semibold text-slate-700">
+          Filter by Technology
+        </h3>
+        {selectedTechnologies.length > 0 && (
+          <div className="flex items-center gap-2 mt-1">
+            <span className="text-sm text-slate-600">
+              Showing {projectCount} project
+              {projectCount !== 1 ? "s" : ""}
+            </span>
+            <button
+              onClick={onClearFilters}
+              className="text-sm text-primary hover:text-primary/80 underline hover:cursor-pointer"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
+      </div>
       <div className="flex flex-wrap gap-2">
         {technologies.map((tech) => (
           <button
@@ -36,21 +52,6 @@ export default function TechnologyFilter({
           </button>
         ))}
       </div>
-
-      {selectedTechnologies.length > 0 && (
-        <div className="mt-4 flex items-center gap-2">
-          <span className="text-sm text-slate-600">
-            Showing {projectCount} project
-            {projectCount !== 1 ? "s" : ""}
-          </span>
-          <button
-            onClick={onClearFilters}
-            className="text-sm text-primary hover:text-primary/80 underline hover:cursor-pointer"
-          >
-            Clear filters
-          </button>
-        </div>
-      )}
     </div>
   );
 }

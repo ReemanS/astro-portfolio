@@ -3,6 +3,7 @@ import ProjectFooter from "@/components/projects/ProjectFooter.astro";
 import ProjectHeader from "@/components/projects/ProjectHeader.astro";
 import Container from "@/components/Container.astro";
 import "@/styles/global.css";
+import CommonHead from "@/components/CommonHead.astro";
 
 interface Props {
   title: string;
@@ -15,13 +16,7 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <meta name="author" content="Reeman Singh" />
-    <meta name="keywords" content="Astro, Portfolio, Reeman Singh" />
+    <CommonHead title={title} description={description} />
     <title>{`${title} - Reeman Singh`}</title>
   </head>
   <body class="font-manrope bg-white">
