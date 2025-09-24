@@ -12,7 +12,7 @@ const { projectData } = Astro.props;
 ---
 
 <li class="project-card p-4 rounded-lg max-w-md group m-4">
-  <a href={`/projects/${projectData.id}`}>
+  <a href={`/projects/${projectData.id}`} data-astro-prefetch>
     <div class="object-contain rounded-lg overflow-hidden">
       <img
         src={projectData.data.thumbnail}
