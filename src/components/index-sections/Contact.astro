@@ -19,20 +19,20 @@ import FacebookIcon from "@/assets/icons/facebook-logo.svg";
 
     <div class="mb-8">
       <h3 class="text-lg font-semibold mb-4">Email</h3>
-      <div class="flex gap-3">
+      <div class="flex gap-2">
         <a
           href="mailto:reemanl.singh422@email.com"
           title="Click to open in mail"
-          class="contact-item flex-1"
+          class="contact-item flex-1 min-w-0"
         >
-          <EmailIcon class="w-6 text-gray-600" />
-          <div>
-            <div class="contact-label">reemanl.singh422@gmail.com</div>
+          <EmailIcon class="w-6 text-gray-600 flex-shrink-0" />
+          <div class="overflow-hidden">
+            <div class="contact-label truncate">reemanl.singh422@gmail.com</div>
           </div>
         </a>
         <button
           id="copyEmailBtn"
-          class="copy-button"
+          class="copy-button flex-shrink-0"
           title="Copy email address"
         >
           <CopyIcon class="w-5" />

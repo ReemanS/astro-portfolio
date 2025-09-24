@@ -11,13 +11,15 @@ interface Props {
 const { projectData } = Astro.props;
 ---
 
-<li class="project-card p-4 rounded-lg max-w-md group m-4">
+<li
+  class="project-card p-4 rounded-lg w-full max-w-sm group mx-2 my-4 sm:max-w-md"
+>
   <a href={`/projects/${projectData.id}`} data-astro-prefetch>
     <div class="object-contain rounded-lg overflow-hidden">
       <img
         src={projectData.data.thumbnail}
         alt={projectData.data.title}
-        class="w-full h-64 object-cover box-border transform transition-transform duration-300 ease-out group-hover:scale-103"
+        class="w-full h-48 sm:h-64 object-cover transform transition-transform duration-300 ease-out group-hover:scale-103"
       />
     </div>
 
@@ -33,9 +35,13 @@ const { projectData } = Astro.props;
       </h3>
       <p class="pt-0.5">{projectData.data.description}</p>
       <div
-        class="flex text-xs gap-3 py-1.5 text-slate-500 group-hover:text-text group-active:text-text transition duration-200"
+        class="flex flex-wrap text-xs gap-2 py-1.5 text-slate-500 group-hover:text-text group-active:text-text transition duration-200"
       >
-        {projectData.data.technologies.map((tech: any) => <div>{tech}</div>)}
+        {
+          projectData.data.technologies.map((tech: any) => (
+            <div class="whitespace-nowrap">{tech}</div>
+          ))
+        }
       </div>
     </div>
   </a>
