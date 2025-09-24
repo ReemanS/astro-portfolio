@@ -72,37 +72,66 @@ import FacebookIcon from "@/assets/icons/facebook-logo.svg";
       </div>
     </div>
   </Container>
-
-  <style>
-    @reference "@/styles/global.css";
-
-    h3 {
-      @apply font-space-grotesk font-medium text-xl;
-    }
-
-    .contact-item {
-      @apply flex items-center gap-4 p-4 rounded-lg border border-gray-200
-       hover:border-primary active:border-primary hover:bg-primary/10 active:bg-primary/10
-        transition duration-200 text-left;
-    }
-
-    .contact-label {
-      @apply text-sm md:text-base font-medium text-slate-900;
-    }
-
-    .copy-button {
-      @apply flex items-center justify-center p-4 rounded-lg border border-gray-200 
-       hover:border-primary hover:bg-primary/10 active:border-primary active:bg-primary/10
-       text-gray-400 hover:text-primary hover:cursor-pointer transition duration-200;
-    }
-  </style>
 </section>
 
+<div id="toast" class="toast hidden">Email copied to your clipboard!</div>
+
+<style>
+  @reference "@/styles/global.css";
+
+  h3 {
+    @apply font-space-grotesk font-medium text-xl;
+  }
+
+  .contact-item {
+    @apply flex items-center gap-4 p-4 rounded-lg border border-gray-200
+       hover:border-primary active:border-primary hover:bg-primary/10 active:bg-primary/10
+        transition duration-200 text-left;
+  }
+
+  .contact-label {
+    @apply text-sm md:text-base font-medium text-slate-900;
+  }
+
+  .copy-button {
+    @apply flex items-center justify-center p-4 rounded-lg border border-gray-200 
+       hover:border-primary hover:bg-primary/10 active:border-primary active:bg-primary/10
+       text-gray-400 hover:text-primary hover:cursor-pointer transition duration-200;
+  }
+
+  .toast {
+    @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 translate-y-8 
+       bg-primary text-white px-6 py-3 rounded-lg shadow-2xl 
+       opacity-0 scale-90 transition-all duration-300 ease-out z-50 text-center;
+  }
+
+  .toast.show {
+    @apply opacity-100 scale-100 translate-y-0;
+  }
+</style>
 <script is:inline>
   const copyBtn = document.getElementById("copyEmailBtn");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText("reemanl.singh422@gmail.com");
+  const toast = document.getElementById("toast");
+
+  if (copyBtn && toast) {
+    copyBtn.addEventListener("click", async () => {
+      const email = "reemanl.singh422@gmail.com";
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(email);
+        }
+
+        toast.classList.remove("hidden");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.classList.add("hidden"), 300);
+        }, 2000);
+      } catch (err) {
+        console.error("Failed to copy: ", err);
+      }
     });
   }
 </script>
