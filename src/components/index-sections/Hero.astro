@@ -6,8 +6,6 @@ import heroImage from "@/assets/images/hero-img-rounded.png";
 import ViewDocIcon from "@/assets/icons/view-doc.svg";
 import ArrowDownIcon from "@/assets/icons/arrow-down.svg";
 import ChatIcon from "@/assets/icons/chat.svg";
-
-const name = "Reeman Singh".split(""); // i'll add animations for this later
 ---
 
 <section id="main" class="relative overflow-visible">
@@ -17,9 +15,7 @@ const name = "Reeman Singh".split(""); // i'll add animations for this later
       <h1
         class="text-primary name-letters leading-tight md:leading-tight font-extrabold -mb-0.5"
       >
-        {/*gonna animate this later  */}
-        {/* could probably put this into its own React component*/}
-        {name.map((letter) => <span>{letter}</span>)}
+        Reeman Singh
       </h1>
 
       <p
@@ -29,6 +25,7 @@ const name = "Reeman Singh".split(""); // i'll add animations for this later
         who enjoys building useful and engaging systems, designing for connection,
         efficiency, and a bit of curiosity on the web (and beyond).
         <Image
+          priority
           src={heroImage}
           alt="Photo of Reeman Singh"
           width={220}
