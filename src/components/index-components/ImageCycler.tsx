@@ -1,7 +1,7 @@
 import { useState } from "react";
-import image1 from "@/assets/images/my-img-1.png";
-import image2 from "@/assets/images/my-img-2.png";
-import image3 from "@/assets/images/my-img-3.png";
+import image1 from "@/assets/images/my-img-1.webp";
+import image2 from "@/assets/images/my-img-2.webp";
+import image3 from "@/assets/images/my-img-3.webp";
 
 export default function ImageSwitcher() {
   const images = [image1, image2, image3];
@@ -52,6 +52,8 @@ export default function ImageSwitcher() {
               transform,
               opacity,
             }}
+            loading="lazy"
+            decoding="async"
           />
         );
       })}
